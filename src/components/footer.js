@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import IconContainer from "./IconContainer";
 
 const Container = styled.footer`
   height: 50px;
@@ -20,19 +21,30 @@ const Icons = styled.div`
   right: 10%;
 `;
 
-const IconPlaceholder = styled.div`
-  width: 35px;
-  height: 35px;
-  border-radius: 100%;
-  background-color: blue;
-`;
-
-const Footer = ({ siteTitle }) => (
+const Footer = () => (
   <Container>
     <Icons>
-      <IconPlaceholder />
-      <IconPlaceholder />
-      <IconPlaceholder />
+      <a
+        href="https://github.com/brianqian"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <IconContainer path="github.svg" size="25" />
+      </a>
+      <a
+        href="mailto:qian.brian@gmail.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <IconContainer path="gmail.svg" size="25" />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/brian-qian"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <IconContainer path="linkedin.svg" size="25" />
+      </a>
     </Icons>
   </Container>
 );
