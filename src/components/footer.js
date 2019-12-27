@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import IconContainer from "./IconContainer";
+import Tooltip from "./Tooltip";
 
 const Container = styled.footer`
   height: 50px;
@@ -25,11 +26,22 @@ const Footer = () => (
   <Container>
     <Icons>
       <a
+        href="https://localhost:8000"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Tooltip text="Home">
+          <IconContainer path="home.svg" size="25" />
+        </Tooltip>
+      </a>
+      <a
         href="https://github.com/brianqian"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <IconContainer path="github.svg" size="25" />
+        <Tooltip text="github">
+          <IconContainer path="github.svg" size="25" />
+        </Tooltip>
       </a>
       <a
         href="mailto:qian.brian@gmail.com"
