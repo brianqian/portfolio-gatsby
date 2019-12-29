@@ -26,7 +26,10 @@ const ImagePlaceholder = styled.div`
 
 const AboutMeContainer = styled.div`
   flex: 2;
-  padding-top: 10%;
+  display: flex;
+  flex-direction: column;
+  padding: 10% 0;
+  height: calc(100vh - 50px);
   span {
     color: white;
     background-color: blue;
@@ -37,8 +40,12 @@ const AboutMeContainer = styled.div`
     margin-top: 2rem;
   }
 `;
-const AboutMeText = styled.div``;
-const LinkButtons = styled.div``;
+const AboutMeText = styled.div`
+  flex: 1;
+`;
+const LinkButtons = styled.div`
+  flex: 1;
+`;
 
 const IndexPage = () => (
   <Layout>

@@ -29,6 +29,7 @@ a {
 
 const Content = styled.main`
   padding: 1.5rem;
+  height: calc(100vh - 50px);
 `;
 
 const Layout = ({ children }) => {

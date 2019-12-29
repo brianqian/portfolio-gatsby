@@ -15,10 +15,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: `projects`,
-        path: `${__dirname}/src/data`,
+        path: `${__dirname}/src/pages/portfolio`,
+        name: "projects",
       },
     },
     `gatsby-transformer-sharp`,
