@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 
@@ -25,7 +26,11 @@ const TextContainer = styled.div`
   padding: 2rem;
 `;
 
-function Portfolio() {
+function Portfolio({ data }) {
+  console.log(data);
+  const {
+    markdownRemark: { frontmatter, html },
+  } = data;
   return (
     <Layout>
       <Container>
@@ -35,24 +40,30 @@ function Portfolio() {
           <div></div>
         </ImageCarousel>
         <TextContainer>
-          <h2>Project Title</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-            exercitationem illum accusantium voluptas voluptatibus, error dolor
-            ad labore sed doloremque eius at incidunt eum quisquam facilis
-            quaerat, mollitia fuga sint. At aliquam deserunt assumenda labore
-            nostrum molestiae voluptatibus neque? Officia repellat fugiat est
-            dignissimos optio explicabo praesentium cupiditate quod consequatur,
-            perferendis pariatur nesciunt, voluptatibus iusto. In incidunt
-            voluptatibus voluptatum veniam! Nemo quas quasi adipisci deleniti
-            explicabo atque eius aut ipsam odit. Nostrum iusto quis eaque?
-            Quisquam natus maxime ut illo. Dicta voluptatibus impedit architecto
-            veritatis non! Aliquam similique autem commodi. Dicta natus ipsam
-          </p>
+          <h2>{frontmatter.title}</h2>
+          <div dangerouslySetInnerHTML={{ __html: html }}></div>
         </TextContainer>
       </Container>
     </Layout>
   );
 }
+
+export const query = graphql`
+  query PortfolioItem($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      html
+      frontmatter {
+        title
+        date
+        img1
+        img2
+        img3
+        github
+        deployment
+        stack
+      }
+    }
+  }
+`;
 
 export default Portfolio;

@@ -1,11 +1,12 @@
 ---
 title: "nSuns Calculator"
-img1:
-img2:
-img3:
+date: "1/2019"
+img1: "placeholder"
+img2: "placeholder"
+img3: "placeholder"
 github: "http://www.github.com"
-deployment:
-stack:
+deployment: "placeholder"
+stack: "placeholder"
 ---
 
 This should be the content

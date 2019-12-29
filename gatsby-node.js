@@ -23,6 +23,7 @@ exports.createPages = async ({ actions, graphql }) => {
       allMarkdownRemark {
         edges {
           node {
+            id
             frontmatter {
               title
             }
@@ -33,12 +34,11 @@ exports.createPages = async ({ actions, graphql }) => {
   `);
 
   data.allMarkdownRemark.edges.forEach(edge => {
-    const {
-      frontmatter: { title },
-    } = edge.node;
+    const { frontmatter, id } = edge.node;
     actions.createPage({
-      path: `/portfolio/${title.toLowerCase().replace(/\s/g, "")}/`,
+      path: `/portfolio/${frontmatter.title.toLowerCase().replace(/\s/g, "")}/`,
       component: path.resolve(`./src/templates/portfolio.js`),
+      context: id,
     });
   });
 };
