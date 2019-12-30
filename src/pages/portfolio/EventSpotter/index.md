@@ -1,9 +1,6 @@
 ---
 title: "EventSpotter"
 date: "8/2019"
-img1: "./eventspotter-full.png"
-img2: "placeholder"
-img3: "placeholder"
 github: "https://github.com/brianqian/eventspotter-react"
 deployment: "http://eventspotter.herokuapp.com"
 stack: "placeholder"

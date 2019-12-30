@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { graphql } from "gatsby";
-
+import Img from "gatsby-image";
 import ProjectGridItem from "../../components/ProjectGridItem";
 import Layout from "../../components/layout";
 
@@ -21,10 +21,7 @@ function Portfolio({ data }) {
         <ProjectContainer>
           {edges.length &&
             edges.map(({ node }) => (
-              <ProjectGridItem
-                title={node.frontmatter.title}
-                img={node.frontmatter.img1}
-              />
+              <ProjectGridItem title={node.frontmatter.title}></ProjectGridItem>
             ))}
         </ProjectContainer>
       </Container>
@@ -40,7 +37,6 @@ export const query = graphql`
           id
           frontmatter {
             title
-            img1
           }
         }
       }

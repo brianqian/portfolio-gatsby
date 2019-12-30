@@ -38,7 +38,7 @@ exports.createPages = async ({ actions, graphql }) => {
     actions.createPage({
       path: `/portfolio/${frontmatter.title.toLowerCase().replace(/\s/g, "")}/`,
       component: path.resolve(`./src/templates/portfolio.js`),
-      context: id,
+      context: { id, imgPath: `${frontmatter.title}/images` },
     });
   });
 };

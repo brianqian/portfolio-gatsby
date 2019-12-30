@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { graphql } from "gatsby";
+import { graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 
 import Layout from "../components/layout";
 
@@ -8,6 +9,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: calc(100vh - 50px);
+  button {
+    border: 1px solid black;
+    border-radius: 100%;
+    padding: 0.5rem;
+    font-size: 20px;
+    height: 42px;
+    width: 42px;
+    :hover {
+      background-color: lightgray;
+    }
+    :active {
+      outline: none;
+    }
+  }
 `;
 
 const ImageCarousel = styled.div`
@@ -30,18 +45,22 @@ function Portfolio({ data }) {
   console.log(data);
   const {
     markdownRemark: { frontmatter, html },
+    images: { nodes },
   } = data;
   return (
     <Layout>
       <Container>
+        <Link to="/portfolio">
+          <button type="button"> &lt; </button>
+        </Link>
         <ImageCarousel>
-          <div></div>
-          <div></div>
-          <div></div>
+          {!!nodes.length &&
+            nodes.map(image => <Img fixed={image.childImageSharp.fixed} />)}
+          {/* <Img fixed={frontmatter.img1.fixed}></Img> */}
         </ImageCarousel>
         <TextContainer>
           <h2>{frontmatter.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: html }}></div>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
         </TextContainer>
       </Container>
     </Layout>
@@ -49,18 +68,29 @@ function Portfolio({ data }) {
 }
 
 export const query = graphql`
-  query PortfolioItem($id: String!) {
+  query PortfolioItem($id: String!, $imgPath: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
         title
         date
-        img1
-        img2
-        img3
         github
         deployment
         stack
+      }
+    }
+    images: allFile(
+      filter: {
+        sourceInstanceName: { eq: "projects" }
+        relativeDirectory: { glob: $imgPath }
+      }
+    ) {
+      nodes {
+        childImageSharp {
+          fixed(width: 250) {
+            ...GatsbyImageSharpFixed_withWebp
+          }
+        }
       }
     }
   }
