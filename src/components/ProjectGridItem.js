@@ -4,11 +4,17 @@ import { Link } from "gatsby";
 
 const Container = styled.div`
   width: 250px;
-  height: 200px;
+  /* height: 200px; */
   border: 1px solid black;
   position: relative;
   > p {
-    transform: translate(50%, -50%);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    top: 0;
   }
 `;
 

@@ -14,14 +14,20 @@ const ProjectContainer = styled.div`
 
 function Portfolio({ data }) {
   const { edges } = data.allMarkdownRemark;
+
   return (
     <Layout>
       <Container>
         <h1>Projects</h1>
         <ProjectContainer>
-          {edges.length &&
-            edges.map(({ node }) => (
-              <ProjectGridItem title={node.frontmatter.title}></ProjectGridItem>
+          {!!edges.length &&
+            edges.map(({ node: { frontmatter }, id }) => (
+              <ProjectGridItem title={frontmatter.title}>
+                <Img
+                  key={id}
+                  fixed={frontmatter.splashImg.childImageSharp.fixed}
+                />
+              </ProjectGridItem>
             ))}
         </ProjectContainer>
       </Container>
@@ -37,6 +43,13 @@ export const query = graphql`
           id
           frontmatter {
             title
+            splashImg {
+              childImageSharp {
+                fixed(width: 250) {
+                  ...GatsbyImageSharpFixed_withWebp
+                }
+              }
+            }
           }
         }
       }

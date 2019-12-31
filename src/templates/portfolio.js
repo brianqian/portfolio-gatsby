@@ -68,7 +68,7 @@ function Portfolio({ data }) {
 }
 
 export const query = graphql`
-  query PortfolioItem($id: String!, $imgPath: String!) {
+  query PortfolioItem($id: String!, $title: String!) {
     markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
@@ -82,7 +82,8 @@ export const query = graphql`
     images: allFile(
       filter: {
         sourceInstanceName: { eq: "projects" }
-        relativeDirectory: { glob: $imgPath }
+        relativeDirectory: { glob: $title }
+        extension: { in: ["png", "jpg", "webp", "gif"] }
       }
     ) {
       nodes {
