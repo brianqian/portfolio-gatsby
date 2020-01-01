@@ -2,30 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "gatsby";
 
+const StyledLink = styled(Link)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
 const Container = styled.div`
-  width: 250px;
-  /* height: 200px; */
-  border: 1px solid black;
-  position: relative;
   > p {
-    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
     top: 0;
   }
 `;
 
 function ProjectGridItem({ title, children }) {
   return (
-    <Link to={`/portfolio/${title.toLowerCase().replace(/\s/g, "")}`}>
+    <StyledLink to={`/portfolio/${title.toLowerCase().replace(/\s/g, "")}`}>
       <Container>
         {children}
         <p>{title}</p>
       </Container>
-    </Link>
+    </StyledLink>
   );
 }
 

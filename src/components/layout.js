@@ -20,10 +20,6 @@ body, html{
 a {
   cursor: pointer;
   transition: .25s ease-in;
-  color: ${p => p.theme.strokeColor};
-    :hover {
-      color: ${p => p.theme.strokeColor};
-    }
 }
 `;
 

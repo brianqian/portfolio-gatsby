@@ -10,6 +10,8 @@ const Container = styled.div``;
 const ProjectContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  justify-content: center;
 `;
 
 function Portfolio({ data }) {
