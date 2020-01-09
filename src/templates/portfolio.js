@@ -4,6 +4,7 @@ import { graphql, Link } from "gatsby";
 import Img from "gatsby-image";
 
 import Layout from "../components/layout";
+import StackContainer from "../components/StackContainer";
 
 const Container = styled.div`
   display: flex;
@@ -39,6 +40,20 @@ const ImageCarousel = styled.div`
 
 const TextContainer = styled.div`
   padding: 2rem;
+  display: flex;
+`;
+
+const DescriptionDiv = styled.div`
+  flex: 3;
+  padding: 0 2rem;
+  > header {
+    display: flex;
+    align-items: center;
+  }
+`;
+
+const StackDiv = styled.div`
+  flex: 1;
 `;
 
 function Portfolio({ data }) {
@@ -59,8 +74,33 @@ function Portfolio({ data }) {
           {/* <Img fixed={frontmatter.img1.fixed}></Img> */}
         </ImageCarousel>
         <TextContainer>
-          <h2>{frontmatter.title}</h2>
-          <div dangerouslySetInnerHTML={{ __html: html }} />
+          <DescriptionDiv>
+            <header>
+              <h2>{frontmatter.title} -</h2>
+              <a
+                href={frontmatter.github}
+                target="__blank"
+                rel="noopener noreferer"
+              >
+                Github
+              </a>
+              <a
+                href={frontmatter.deployment}
+                target="__blank"
+                rel="noopener noreferer"
+              >
+                Deployment
+              </a>
+            </header>
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+          </DescriptionDiv>
+          <StackDiv>
+            <h2>Built with: </h2>
+            {frontmatter.stack &&
+              frontmatter.stack.map(item => {
+                return <StackContainer name={item} />;
+              })}
+          </StackDiv>
         </TextContainer>
       </Container>
     </Layout>
@@ -88,7 +128,7 @@ export const query = graphql`
     ) {
       nodes {
         childImageSharp {
-          fixed(width: 250) {
+          fixed(width: 350) {
             ...GatsbyImageSharpFixed_withWebp
           }
         }

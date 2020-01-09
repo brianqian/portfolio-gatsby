@@ -12,6 +12,7 @@ const ProjectContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   width: 100%;
   justify-content: center;
+  padding: 2rem 0;
 `;
 
 function Portfolio({ data }) {
@@ -47,7 +48,7 @@ export const query = graphql`
             title
             splashImg {
               childImageSharp {
-                fixed(width: 250) {
+                fixed(width: 300) {
                   ...GatsbyImageSharpFixed_withWebp
                 }
               }

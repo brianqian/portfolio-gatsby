@@ -3,7 +3,18 @@ title: "EventSpotter"
 date: "8/2019"
 github: "https://github.com/brianqian/eventspotter-react"
 deployment: "http://eventspotter.herokuapp.com"
-stack: "placeholder"
+stack:
+  [
+    "HTML",
+    "CSS",
+    "Typescript",
+    "React",
+    "NextJS",
+    "styled-components",
+    "Node",
+    "Express",
+    "MySQL",
+  ]
 splashImg: "./eventspotter.png"
 ---
 
