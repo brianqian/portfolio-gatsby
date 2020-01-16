@@ -15,8 +15,8 @@ const Container = styled.div`
     border-radius: 100%;
     padding: 0.5rem;
     font-size: 20px;
-    height: 42px;
-    width: 42px;
+    height: 50px;
+    width: 50px;
     :hover {
       background-color: lightgray;
     }
@@ -66,7 +66,10 @@ function Portfolio({ data }) {
     <Layout>
       <Container>
         <Link to="/portfolio">
-          <button type="button"> &lt; </button>
+          <button type="button">
+            {" "}
+            <img src="/img/icons8-back-50.png" width="100%" />{" "}
+          </button>
         </Link>
         <ImageCarousel>
           {!!nodes.length &&

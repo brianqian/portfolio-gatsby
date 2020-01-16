@@ -5,7 +5,9 @@ import Img from "gatsby-image";
 import ProjectGridItem from "../../components/ProjectGridItem";
 import Layout from "../../components/layout";
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding: 0 8%;
+`;
 
 const ProjectContainer = styled.div`
   display: grid;
@@ -13,6 +15,7 @@ const ProjectContainer = styled.div`
   width: 100%;
   justify-content: center;
   padding: 2rem 0;
+  grid-gap: 1rem 0;
 `;
 
 function Portfolio({ data }) {

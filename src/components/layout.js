@@ -20,6 +20,9 @@ body, html{
 a {
   cursor: pointer;
   transition: .25s ease-in;
+  :visited {
+    color: ${p => p.theme.strokeColor};
+  }
 }
 `;
 

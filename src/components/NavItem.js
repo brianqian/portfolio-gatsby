@@ -10,7 +10,7 @@ to {
 
 const Container = styled.div`
   position: relative;
-  :hover {
+  .active {
     background: linear-gradient(darkorange, darkorange) white no-repeat 0 0;
     background-size: 0 100%;
     animation: ${colorText} 0.25s linear 1 backwards;
@@ -29,7 +29,9 @@ const StyledLink = styled(Link)`
 function NavItem({ isActive, children, to }) {
   return (
     <Container isActive={isActive}>
-      <StyledLink to={to}>{children}</StyledLink>
+      <StyledLink to={to} activeClassName="active">
+        {children}
+      </StyledLink>
     </Container>
   );
 }
