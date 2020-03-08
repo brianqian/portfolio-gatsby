@@ -5,7 +5,7 @@ import { theme } from "../utils/theme";
 import Footer from "./footer";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Nunito+Sans|Work+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans|Work+Sans&display=swap');
 body, html{
   font-family: 'Work Sans';
   max-width: 100vw;
@@ -28,7 +28,8 @@ a {
 
 const Content = styled.main`
   padding: 1.5rem;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+  margin-bottom: 2rem;
 `;
 
 const Layout = ({ children }) => {

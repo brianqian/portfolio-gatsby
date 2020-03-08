@@ -4,10 +4,10 @@ const darkColor = {
 };
 
 const theme = {
-  backgroundColor: "white",
+  backgroundColor: "#F7FAFC",
   strokeColor: "black",
   // ORIGINAL VALUE bs: "0 12px 24px 0 rgba(0, 0, 0, 0.09)",
-  bs: "0 12px 24px 0 rgba(0, 0, 0, .2)",
+  bs: "0 10px 23px -5px rgba(0,0,0,.2)",
   textFont: "Source Sans Pro",
   accent: "darkorange",
   changeOpacity: (color, opacity) => {

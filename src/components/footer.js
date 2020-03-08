@@ -39,11 +39,7 @@ const Footer = props => {
         <NavItem to="/portfolio">Portfolio</NavItem>
       </NavItems>
       <SocialItems>
-        <a
-          href="https://localhost:8000"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="http://localhost:8000">
           <Tooltip text="Home">
             <IconContainer path="home.svg" size="25" />
           </Tooltip>

@@ -9,7 +9,9 @@ import StackContainer from "../components/StackContainer";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
+  margin: 0 20%;
+  /* border: 1px solid black; */
   button {
     border: 1px solid black;
     border-radius: 100%;
@@ -39,21 +41,33 @@ const ImageCarousel = styled.div`
 `;
 
 const TextContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 8fr;
   padding: 2rem;
-  display: flex;
 `;
 
 const DescriptionDiv = styled.div`
-  flex: 3;
-  padding: 0 2rem;
+  font-family: "Open Sans";
+  line-height: 1.5em;
+  font-size: 18px;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 1rem 2rem;
   > header {
     display: flex;
     align-items: center;
   }
 `;
 
+const ProjectTitle = styled.h2`
+  font-size: 2em;
+`;
+
 const StackDiv = styled.div`
-  flex: 1;
+  grid-row: 2;
+  grid-column: 1;
+  padding: 1rem;
 `;
 
 function Portfolio({ data }) {
@@ -67,8 +81,7 @@ function Portfolio({ data }) {
       <Container>
         <Link to="/portfolio">
           <button type="button">
-            {" "}
-            <img src="/img/icons8-back-50.png" width="100%" />{" "}
+            <img src="/img/icons8-back-50.png" width="100%" alt="back" />
           </button>
         </Link>
         <ImageCarousel>
@@ -77,8 +90,15 @@ function Portfolio({ data }) {
           {/* <Img fixed={frontmatter.img1.fixed}></Img> */}
         </ImageCarousel>
         <TextContainer>
+          <ProjectTitle>{frontmatter.title} </ProjectTitle>
+          <StackDiv>
+            {frontmatter.stack &&
+              frontmatter.stack.map(item => {
+                return <StackContainer name={item} />;
+              })}
+          </StackDiv>
           <DescriptionDiv>
-            <header>
+            {/* <header>
               <h2>{frontmatter.title} -</h2>
               <a
                 href={frontmatter.github}
@@ -94,16 +114,9 @@ function Portfolio({ data }) {
               >
                 Deployment
               </a>
-            </header>
+            </header> */}
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </DescriptionDiv>
-          <StackDiv>
-            <h2>Built with: </h2>
-            {frontmatter.stack &&
-              frontmatter.stack.map(item => {
-                return <StackContainer name={item} />;
-              })}
-          </StackDiv>
         </TextContainer>
       </Container>
     </Layout>

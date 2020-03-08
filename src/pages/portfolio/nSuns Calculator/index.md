@@ -1,4 +1,5 @@
 ---
+id: 1
 title: "nSuns Calculator"
 date: "1/2019"
 github: "https://github.com/brianqian/nsuns-react"

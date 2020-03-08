@@ -7,15 +7,17 @@ import Layout from "../../components/layout";
 
 const Container = styled.div`
   padding: 0 8%;
+  margin: 0 20%;
 `;
 
 const ProjectContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
   justify-content: center;
   padding: 2rem 0;
-  grid-gap: 1rem 0;
+  grid-gap: 1rem 3rem;
+  margin-top: 2rem;
 `;
 
 function Portfolio({ data }) {
@@ -43,7 +45,7 @@ function Portfolio({ data }) {
 
 export const query = graphql`
   query PortfolioPage {
-    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+    allMarkdownRemark(sort: { fields: frontmatter___id, order: DESC }) {
       edges {
         node {
           id

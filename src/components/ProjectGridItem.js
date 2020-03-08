@@ -12,10 +12,13 @@ const StyledLink = styled(Link)`
 
 const Container = styled.div`
   padding: 1.5rem;
-  transition: 0.35s ease-in;
-  /* box-shadow: ${props => props.theme.bs}; */
-  ${StyledLink} :hover &{
+  transition: 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  ${StyledLink} :hover & {
     box-shadow: ${props => props.theme.bs};
+    border-radius: 18px;
   }
   > p {
     display: flex;
