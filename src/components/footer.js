@@ -13,7 +13,7 @@ const Container = styled.footer`
   position: fixed;
   bottom: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 0 8rem;
 `;
 
@@ -34,10 +34,6 @@ const Footer = props => {
   console.log(props);
   return (
     <Container>
-      <NavItems>
-        <NavItem to="/">Home</NavItem>
-        <NavItem to="/portfolio">Portfolio</NavItem>
-      </NavItems>
       <SocialItems>
         <a href="http://localhost:8000">
           <Tooltip text="Home">
@@ -49,7 +45,7 @@ const Footer = props => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Tooltip text="github">
+          <Tooltip text="Github">
             <IconContainer path="github.svg" size="25" />
           </Tooltip>
         </a>
@@ -58,14 +54,18 @@ const Footer = props => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <IconContainer path="gmail.svg" size="25" />
+          <Tooltip text="qian.brian@gmail.com">
+            <IconContainer path="gmail.svg" size="25" />
+          </Tooltip>
         </a>
         <a
           href="https://www.linkedin.com/in/brian-qian"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <IconContainer path="linkedin.svg" size="25" />
+          <Tooltip text="LinkedIn">
+            <IconContainer path="linkedin.svg" size="25" />
+          </Tooltip>
         </a>
       </SocialItems>
     </Container>

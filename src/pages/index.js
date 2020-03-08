@@ -58,21 +58,15 @@ const IndexPage = () => (
         <AboutMeText>
           <h1>BRIAN QIAN</h1>
           <h3>
-            Self-taught programmer focused on creating excellent experiences for
-            users and developers alike.
+            Self-taught programmer focused on creating experiences for users and
+            developers alike.
           </h3>
           <p>
             I'm a fullstack dev that works primarily with React for the frontend
             and Node/MySQL for the backend. I'm a bootcamp grad from UC Berkeley
-            but I would consider myself mostly self-taught. The bootcamp taught
-            me everything leading up to React: HTML/CSS, vanilla Javascript,
-            jQuery, and SQL/NoSQL databases. After the bootcamp, I picked up
-            Redux and the Context API for state management, Jest/Enzyme for
-            testing, and Webpack/Babel for build tools. I've also learned to use
-            more modern tools like Typescript and NextJS for server-side
-            rendering. As class-based architecture in React faded, I've
-            familiarized myself with hooks and how to use them effectively. I'm
-            always learning and always getting better.
+            but I would consider myself mostly self-taught. I've always had a
+            passion for problem solving and found programming filled that void
+            in ways other careers couldn't.
           </p>
         </AboutMeText>
         <LinkButtons>

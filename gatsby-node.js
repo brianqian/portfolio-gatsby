@@ -37,7 +37,7 @@ exports.createPages = async ({ actions, graphql }) => {
     const { frontmatter, id } = edge.node;
     actions.createPage({
       path: `/portfolio/${frontmatter.title.toLowerCase().replace(/\s/g, "")}/`,
-      component: path.resolve(`./src/templates/portfolio.js`),
+      component: path.resolve(`./src/templates/portfolio-item.js`),
       context: { id, title: frontmatter.title },
     });
   });

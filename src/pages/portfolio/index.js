@@ -7,7 +7,6 @@ import Layout from "../../components/layout";
 
 const Container = styled.div`
   padding: 0 8%;
-  margin: 0 20%;
 `;
 
 const ProjectContainer = styled.div`
@@ -34,6 +33,7 @@ function Portfolio({ data }) {
                 <Img
                   key={id}
                   fixed={frontmatter.splashImg.childImageSharp.fixed}
+                  imgStyle={{ borderRadius: "10px" }}
                 />
               </ProjectGridItem>
             ))}

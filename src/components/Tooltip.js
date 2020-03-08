@@ -7,12 +7,12 @@ const Container = styled.div`
 
 const TooltipContainer = styled.div`
   position: absolute;
-  top: -40px;
-  border: 1px solid black;
+  top: -38px;
+  left: -10px;
   border-radius: 5px;
-  background-color: black;
-  color: white;
-  border: 1px solid white;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
   padding: 8px 12px;
   p {
     font-size: 10px;

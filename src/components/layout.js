@@ -27,7 +27,7 @@ a {
 `;
 
 const Content = styled.main`
-  padding: 1.5rem;
+  padding: 0 9%;
   min-height: calc(100vh - 50px);
   margin-bottom: 2rem;
 `;
