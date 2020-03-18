@@ -3,22 +3,20 @@ import styled from "styled-components";
 import { Link } from "gatsby";
 
 const StyledLink = styled(Link)`
-  /* width: 100%; */
   display: flex;
   justify-content: center;
   text-decoration: none;
-  /* border: 1px solid black; */
 `;
 
 const Container = styled.div`
-  padding: 1.5rem;
+  margin: 1.5rem;
   transition: 0.4s ease-out;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
   ${StyledLink} :hover & {
-    box-shadow: ${props => props.theme.bs};
-    border-radius: 18px;
+    opacity: 0.8;
   }
   > p {
     display: flex;
@@ -35,7 +33,7 @@ function ProjectGridItem({ title, children }) {
     <StyledLink to={`/portfolio/${title.toLowerCase().replace(/\s/g, "")}`}>
       <Container>
         {children}
-        <p>{title}</p>
+        {/* <p>{title}</p> */}
       </Container>
     </StyledLink>
   );

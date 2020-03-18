@@ -33,7 +33,7 @@ function Portfolio({ data }) {
                 <Img
                   key={id}
                   fixed={frontmatter.splashImg.childImageSharp.fixed}
-                  imgStyle={{ borderRadius: "10px" }}
+                  // imgStyle={{ borderRadius: "10px" }}
                 />
               </ProjectGridItem>
             ))}
@@ -53,7 +53,7 @@ export const query = graphql`
             title
             splashImg {
               childImageSharp {
-                fixed(width: 300) {
+                fixed(width: 450) {
                   ...GatsbyImageSharpFixed_withWebp
                 }
               }
