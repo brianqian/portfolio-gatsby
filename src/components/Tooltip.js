@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   position: relative;
@@ -14,6 +14,9 @@ const TooltipContainer = styled.div`
   color: black;
   border: 1px solid black;
   padding: 8px 12px;
+  width: content-fit;
+  white-space: nowrap;
+  user-select: none;
   p {
     font-size: 10px;
   }

@@ -1,11 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   border-radius: 100%;
   display: flex;
   align-content: center;
   justify-content: center;
+  user-select: none;
   > img {
     transition: 0.25s ease-in;
     filter: grayscale(40%);
