@@ -33,11 +33,11 @@ const Footer = () => {
   return (
     <Container>
       <SocialItems>
-        <a href={process.env.GATSBY_HOST_NAME || process.env.URL}>
+        <Link to="/">
           <Tooltip text="Home">
             <IconContainer path="home.svg" size="25" />
           </Tooltip>
-        </a>
+        </Link>
         <a
           href="https://github.com/brianqian"
           target="_blank"

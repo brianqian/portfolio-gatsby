@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, { useState, useContext } from 'react';
+import styled, { ThemeContext } from 'styled-components';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import Modal from '../components/ImageModal';
 import Layout from '../components/layout';
 import StackContainer from '../components/StackContainer';
+import LinkIcon from '../components/svg/LinkComponent';
+import CodeIcon from '../components/svg/CodeComponent';
 
 const Container = styled.div`
   display: flex;
@@ -15,11 +17,9 @@ const Container = styled.div`
   @media all and (max-width: 1200px) {
     width: 100%;
   }
-  /* border: 1px solid black; */
 `;
 
 const BackButton = styled.button`
-  /* border: 1px solid black; */
   border: none;
   border-radius: 100%;
   box-shadow: 0px 10px 23px -5px rgba(0,0,0,.2);
@@ -45,10 +45,11 @@ const ImageCarousel = styled.div`
   width: 100%;
   margin: 0 auto;
   grid-gap: 0.5rem;
-  > div {
-    height: 200px;
-    width: 200px;
-    background-color: gray;
+  transition: 0.25s ease-in;
+  .carousel__image {
+    transition :hover {
+      border: 1px solid ${props => props.theme.strokeColor};
+    }
   }
 `;
 
@@ -74,6 +75,7 @@ const DescriptionDiv = styled.div`
 
 const ProjectTitle = styled.h2`
   font-size: 2em;
+  display: flex;
 `;
 
 const StackDiv = styled.div`
@@ -82,11 +84,13 @@ const StackDiv = styled.div`
   padding: 0 0.5rem;
 `;
 
-function Portfolio({ data }) {
+function Portfolio(props) {
+  const themeContext = useContext(ThemeContext);
   const [imageMap, setImageMap] = useState({});
   const closeModal = id => {
     setImageMap({ ...imageMap, [id]: false });
   };
+  console.log('THEME', themeContext, themeContext?.strokeColor);
 
   const openModal = id => {
     // if (e.type === 'click')
@@ -102,7 +106,7 @@ function Portfolio({ data }) {
   const {
     markdownRemark: { frontmatter, html },
     images: { nodes },
-  } = data;
+  } = props.data;
 
   return (
     <Layout>
@@ -126,7 +130,10 @@ function Portfolio({ data }) {
                   tabIndex={i}
                   onKeyPress={e => handleKeyPress(e, id)}
                 >
-                  <Img fixed={image.childImageSharp.fixed} />
+                  <Img
+                    fixed={image.childImageSharp.fixed}
+                    className="carousel__image"
+                  />
                   <Modal
                     height="85vh"
                     width="70vw"
@@ -143,11 +150,19 @@ function Portfolio({ data }) {
           {/* <Img fixed={frontmatter.img1.fixed}></Img> */}
         </ImageCarousel>
         <TextContainer>
-          <ProjectTitle>{frontmatter.title} </ProjectTitle>
+          <ProjectTitle>
+            {frontmatter.title}
+            <a href={frontmatter.deployment}>
+              <LinkIcon size="15" color="black" />
+            </a>
+            <a href={frontmatter.github}>
+              <CodeIcon size="15" color="black" />
+            </a>
+          </ProjectTitle>
           <StackDiv>
             {frontmatter.stack &&
               frontmatter.stack.map(item => {
-                return <StackContainer name={item} />;
+                return <StackContainer key={item} name={item} />;
               })}
           </StackDiv>
           <DescriptionDiv>
@@ -210,4 +225,4 @@ export const query = graphql`
   }
 `;
 
-export default React.memo(Portfolio);
+export default Portfolio;

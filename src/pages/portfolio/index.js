@@ -17,6 +17,9 @@ const ProjectContainer = styled.div`
   padding: 2rem 0;
   grid-gap: 1rem 3rem;
   margin-top: 2rem;
+  @media all and (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 function Portfolio({ data }) {

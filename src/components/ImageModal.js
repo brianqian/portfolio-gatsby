@@ -17,7 +17,7 @@ const Modal = styled.div`
   /* background-color: ${props => props.theme.color.background}; */
   background-color: transparent;
   box-shadow: -10px 10px 10px 5px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* border: 1px solid rgba(255, 255, 255, 0.4); */
   height: ${props => props.height || 'auto'};
   width: ${props => props.width || 'auto'};
   max-width: 100vw;

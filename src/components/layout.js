@@ -1,8 +1,8 @@
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
-import { useStaticQuery, graphql } from "gatsby";
-import React from "react";
-import { theme } from "../utils/theme";
-import Footer from "./footer";
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby';
+import React from 'react';
+import { theme } from '../utils/theme';
+import Footer from './footer';
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans|Work+Sans&display=swap');
@@ -30,6 +30,10 @@ const Content = styled.main`
   padding: 0 9%;
   min-height: calc(100vh - 50px);
   margin-bottom: 2rem;
+
+  @media all and (max-width: 1200px) {
+    padding: 0;
+  }
 `;
 
 const Layout = ({ children }) => {

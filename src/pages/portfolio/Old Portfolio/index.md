@@ -1,11 +1,11 @@
 ---
 id: 2
-title: "Old Portfolio"
-date: "4/2019"
-github: "http://www.github.com"
-deployment: "https://brianqian-portfolio.netlify.com"
-stack: ["HTML", "styled-components", "Javascript", "React"]
-splashImg: "./oldportfolio.png"
+title: 'Old Portfolio'
+date: '4/2019'
+github: 'http://www.github.com/portfolio-classic'
+deployment: 'https://brianqian-portfolio.netlify.com'
+stack: ['HTML', 'styled-components', 'Javascript', 'React']
+splashImg: './oldportfolio.png'
 ---
 
 This project is one of the only projects I have that features only a front-end. This taught me many specific front-end priorities like image optimization, parallax effects, and CSS animations. Images were manually edited to have different sizes and dimensions and would be served depending on the user's viewport by using the srcset tag.

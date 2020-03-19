@@ -1,12 +1,17 @@
-import React from "react";
-import { Link } from "gatsby";
-import styled from "styled-components";
+import React from 'react';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const Container = styled.div`
   display: flex;
+  @media all and (max-width: 900px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -20,32 +25,47 @@ const ImagePlaceholder = styled.div`
   height: 250px;
   border-radius: 100%;
   background-color: black;
-  position: absolute;
-  right: 50px;
+  position: relative;
 `;
 
 const AboutMeContainer = styled.div`
-  flex: 2;
+  flex: 2.5;
   display: flex;
   flex-direction: column;
   padding: 10% 0;
-  height: calc(100vh - 50px);
-  span {
-    color: white;
-    background-color: hsla(300, 50%, 30%, 0.8);
-    padding: 10px 15px;
-    border-radius: 10px;
-  }
-  a {
-    text-decoration: none;
-    margin-top: 2rem;
-  }
+  height: 100%;
 `;
 const AboutMeText = styled.div`
   flex: 1;
+  > h1 {
+    font-size: 3.2em;
+  }
+  > h3 {
+    font-size: 1.5em;
+  }
+  > p {
+    font-size: 18px;
+  }
+  > * {
+    margin: 1rem 0;
+  }
 `;
-const LinkButtons = styled.div`
-  flex: 1;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  margin-top: 2rem;
+  align-self: flex-end;
+  width: fit-content;
+  margin-right: 2rem;
+  > span {
+    /* color: white;
+    background-color: hsla(300, 50%, 30%, 0.8);
+    padding: 10px 15px;
+    border-radius: 10px; */
+    font-size: 1.5em;
+    border-bottom: 1px solid black;
+    padding-bottom: 8px;
+  }
 `;
 
 const IndexPage = () => (
@@ -75,11 +95,10 @@ const IndexPage = () => (
             Now.
           </p>
         </AboutMeText>
-        <LinkButtons>
-          <Link to="/portfolio/">
-            <span>View Portfolio ></span>
-          </Link>
-        </LinkButtons>
+
+        <StyledLink to="/portfolio/">
+          <span>View Portfolio > </span>
+        </StyledLink>
       </AboutMeContainer>
     </Container>
   </Layout>
