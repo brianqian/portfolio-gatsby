@@ -1,9 +1,9 @@
-import { Link } from "gatsby";
-import React from "react";
-import styled from "styled-components";
-import IconContainer from "./IconContainer";
-import Tooltip from "./Tooltip";
-import NavItem from "./NavItem";
+import { Link } from 'gatsby';
+import React from 'react';
+import styled from 'styled-components';
+import IconContainer from './IconContainer';
+import Tooltip from './Tooltip';
+import NavItem from './NavItem';
 
 const Container = styled.footer`
   height: 50px;
@@ -30,8 +30,7 @@ const NavItems = styled(SocialItems)`
   text-transform: uppercase;
 `;
 
-const Footer = props => {
-  console.log(props);
+const Footer = () => {
   return (
     <Container>
       <SocialItems>
@@ -72,4 +71,4 @@ const Footer = props => {
   );
 };
 
-export default Footer;
+export default React.memo(Footer);

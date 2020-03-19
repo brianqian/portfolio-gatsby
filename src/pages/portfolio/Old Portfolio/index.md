@@ -3,7 +3,7 @@ id: 2
 title: "Old Portfolio"
 date: "4/2019"
 github: "http://www.github.com"
-deployment: "https://brianqian.com"
+deployment: "https://brianqian-portfolio.netlify.com"
 stack: ["HTML", "styled-components", "Javascript", "React"]
 splashImg: "./oldportfolio.png"
 ---

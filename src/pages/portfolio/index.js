@@ -21,7 +21,6 @@ const ProjectContainer = styled.div`
 
 function Portfolio({ data }) {
   const { edges } = data.allMarkdownRemark;
-
   return (
     <Layout>
       <Container>
@@ -33,7 +32,14 @@ function Portfolio({ data }) {
                 <Img
                   key={id}
                   fixed={frontmatter.splashImg.childImageSharp.fixed}
-                  // imgStyle={{ borderRadius: "10px" }}
+                  style={{
+                    boxShadow: "-1px 10px 15px -2px hsla(570, 50%, 35%, .5)",
+                  }}
+                  imgStyle={
+                    {
+                      // border: "1.5px solid hsla(300, 50%, 40%, .6)",
+                    }
+                  }
                 />
               </ProjectGridItem>
             ))}
@@ -53,7 +59,7 @@ export const query = graphql`
             title
             splashImg {
               childImageSharp {
-                fixed(width: 450) {
+                fixed(width: 450, quality: 100) {
                   ...GatsbyImageSharpFixed_withWebp
                 }
               }

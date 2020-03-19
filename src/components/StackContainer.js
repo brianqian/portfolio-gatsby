@@ -7,9 +7,10 @@ const Container = styled.div`
   margin: 0.5rem 0;
   transition: 0.25s ease-in;
   :hover {
-    background-color: lightgray;
+    /* background-color: lightgray; */
+    opacity: 0.65;
+    cursor: default;
   }
-  /* border: 1px solid black; */
   > p {
     margin: 0 0.5rem;
   }

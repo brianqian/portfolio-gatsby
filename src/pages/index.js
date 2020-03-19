@@ -32,11 +32,12 @@ const AboutMeContainer = styled.div`
   height: calc(100vh - 50px);
   span {
     color: white;
-    background-color: blue;
+    background-color: hsla(300, 50%, 30%, 0.8);
     padding: 10px 15px;
     border-radius: 10px;
   }
   a {
+    text-decoration: none;
     margin-top: 2rem;
   }
 `;
@@ -63,10 +64,15 @@ const IndexPage = () => (
           </h3>
           <p>
             I'm a fullstack dev that works primarily with React for the frontend
-            and Node/MySQL for the backend. I'm a bootcamp grad from UC Berkeley
-            but I would consider myself mostly self-taught. I've always had a
-            passion for problem solving and found programming filled that void
-            in ways other careers couldn't.
+            and Node/Postgres for the backend. I'm a bootcamp grad from UC
+            Berkeley but I would consider myself mostly self-taught.
+          </p>
+
+          <p>
+            Technologies I've learned include React, Node, Express, MySQL,
+            Postgres, MongoDB, Nextjs, Gatsby, GraphQL, Websocket API,
+            styled-components. I've deployed on AWS, Heroku, Netlify, and Zeit
+            Now.
           </p>
         </AboutMeText>
         <LinkButtons>

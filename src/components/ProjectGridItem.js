@@ -14,17 +14,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 
   ${StyledLink} :hover & {
     opacity: 0.8;
   }
   > p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 0;
-    margin: 0.5rem;
-    font-size: 20px;
+    margin-top: 0.5rem;
+    font-size: 1.2em;
   }
 `;
 
@@ -33,7 +30,7 @@ function ProjectGridItem({ title, children }) {
     <StyledLink to={`/portfolio/${title.toLowerCase().replace(/\s/g, "")}`}>
       <Container>
         {children}
-        {/* <p>{title}</p> */}
+        <p>{title}</p>
       </Container>
     </StyledLink>
   );

@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "styled-components";
-import { graphql, Link } from "gatsby";
-import Img from "gatsby-image";
-
-import Layout from "../components/layout";
-import StackContainer from "../components/StackContainer";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import Modal from '../components/ImageModal';
+import Layout from '../components/layout';
+import StackContainer from '../components/StackContainer';
 
 const Container = styled.div`
   display: flex;
@@ -29,10 +29,12 @@ const Container = styled.div`
 `;
 
 const ImageCarousel = styled.div`
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
   justify-content: space-around;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
+  grid-gap: 0.5rem;
   > div {
     height: 200px;
     width: 200px;
@@ -43,12 +45,12 @@ const ImageCarousel = styled.div`
 const TextContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: 1fr 8fr;
+  grid-template-rows: auto 1fr;
   padding: 2rem;
 `;
 
 const DescriptionDiv = styled.div`
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   line-height: 1.5em;
   font-size: 18px;
   grid-column: 2;
@@ -67,15 +69,32 @@ const ProjectTitle = styled.h2`
 const StackDiv = styled.div`
   grid-row: 2;
   grid-column: 1;
-  padding: 1rem;
+  padding: 0 0.5rem;
 `;
 
 function Portfolio({ data }) {
-  console.log(data);
+  const [imageMap, setImageMap] = useState({});
+
+  const closeModal = id => {
+    setImageMap({ ...imageMap, [id]: false });
+  };
+
+  const openModal = id => {
+    // if (e.type === 'click')
+    setImageMap({ ...imageMap, [id]: true });
+  };
+
+  const handleKeyPress = (e, id) => {
+    console.log(e.type, e.key, e.keyCode);
+    if (e.key === 'Enter') openModal(id);
+    if (e.key === 'Escape') closeModal(id);
+  };
+
   const {
     markdownRemark: { frontmatter, html },
     images: { nodes },
   } = data;
+
   return (
     <Layout>
       <Container>
@@ -86,7 +105,32 @@ function Portfolio({ data }) {
         </Link>
         <ImageCarousel>
           {!!nodes.length &&
-            nodes.map(image => <Img fixed={image.childImageSharp.fixed} />)}
+            nodes.map((image, i) => {
+              const {
+                childImageSharp: { id, fluid },
+              } = image;
+              return (
+                <div
+                  key={id}
+                  onClick={() => openModal(id)}
+                  role="tablist"
+                  tabIndex={i}
+                  onKeyPress={e => handleKeyPress(e, id)}
+                >
+                  <Img fixed={image.childImageSharp.fixed} />
+                  <Modal
+                    height="85vh"
+                    width="70vw"
+                    padding="1rem"
+                    hide={closeModal}
+                    isShowing={!!imageMap[id]}
+                    id={id}
+                  >
+                    <Img fluid={fluid} />
+                  </Modal>
+                </div>
+              );
+            })}
           {/* <Img fixed={frontmatter.img1.fixed}></Img> */}
         </ImageCarousel>
         <TextContainer>
@@ -147,10 +191,14 @@ export const query = graphql`
           fixed(width: 350) {
             ...GatsbyImageSharpFixed_withWebp
           }
+          fluid(maxWidth: 1920, quality: 100) {
+            ...GatsbyImageSharpFluid_withWebp
+          }
+          id
         }
       }
     }
   }
 `;
 
-export default Portfolio;
+export default React.memo(Portfolio);
