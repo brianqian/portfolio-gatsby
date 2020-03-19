@@ -68,40 +68,42 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <Container>
-      <ImageContainer>
-        <ImagePlaceholder />
-      </ImageContainer>
-      <AboutMeContainer>
-        <AboutMeText>
-          <h1>BRIAN QIAN</h1>
-          <h3>
-            Self-taught programmer focused on creating experiences for users and
-            developers alike.
-          </h3>
-          <p>
-            I'm a fullstack dev that works primarily with React for the frontend
-            and Node/Postgres for the backend. I'm a bootcamp grad from UC
-            Berkeley but I would consider myself mostly self-taught.
-          </p>
+const IndexPage = () => {
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Container>
+        <ImageContainer>
+          <ImagePlaceholder />
+        </ImageContainer>
+        <AboutMeContainer>
+          <AboutMeText>
+            <h1>BRIAN QIAN</h1>
+            <h3>
+              Self-taught programmer focused on creating experiences for users
+              and developers alike.
+            </h3>
+            <p>
+              I'm a fullstack dev that works primarily with React for the
+              fronten and Node/Postgres for the backend.I'm a bootcamp grad from
+              UC Berkeley but I would consider myself mostly self-taught.
+            </p>
 
-          <p>
-            Technologies I've learned include React, Node, Express, MySQL,
-            Postgres, MongoDB, Nextjs, Gatsby, GraphQL, Websocket API,
-            styled-components. I've deployed on AWS, Heroku, Netlify, and Zeit
-            Now.
-          </p>
-        </AboutMeText>
+            <p>
+              Technologies I've learned include React, Node, Express, MySQL
+              Postgres, MongoDB, Nextjs, Gatsby, GraphQL, Websocket A
+              styled-components.I've deployed on AWS, Heroku, Netlify, and Zeit
+              Now.
+            </p>
+          </AboutMeText>
 
-        <StyledLink to="/portfolio/">
-          <span>View Portfolio > </span>
-        </StyledLink>
-      </AboutMeContainer>
-    </Container>
-  </Layout>
-);
+          <StyledLink to="/portfolio/">
+            <span>View Portfolio > </span>
+          </StyledLink>
+        </AboutMeContainer>
+      </Container>
+    </Layout>
+  );
+};
 
 export default IndexPage;

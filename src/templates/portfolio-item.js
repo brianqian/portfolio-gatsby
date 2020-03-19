@@ -1,5 +1,5 @@
-import React, { useState, useContext } from 'react';
-import styled, { ThemeContext } from 'styled-components';
+import React, { useState } from 'react';
+import styled, { ThemeConsumer } from 'styled-components';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import Modal from '../components/ImageModal';
@@ -28,6 +28,8 @@ const BackButton = styled.button`
   height: 50px;
   width: 50px;
   transition: .2s ease-in;
+  background-color: hsla(0,0%,70%,.8);
+  /* ${props => props.theme.isDark && 'background-color: hsla(0,0%,5%,.9)'}; */
   :hover {
     background-color: hsla(0, 0%, 93%, .7);
     box-shadow: -1px 7px 9px 0px rgba(0,0,0,.4);
@@ -47,7 +49,8 @@ const ImageCarousel = styled.div`
   grid-gap: 0.5rem;
   transition: 0.25s ease-in;
   .carousel__image {
-    transition :hover {
+    transition: 0.25s ease-in;
+    :hover {
       border: 1px solid ${props => props.theme.strokeColor};
     }
   }
@@ -74,23 +77,30 @@ const DescriptionDiv = styled.div`
 `;
 
 const ProjectTitle = styled.h2`
-  font-size: 2em;
+  /* font-size: 2em; */
   display: flex;
+  margin-left: 2rem;
 `;
 
-const StackDiv = styled.div`
+const StackDiv = styled.aside`
   grid-row: 2;
   grid-column: 1;
-  padding: 0 0.5rem;
+  padding: 0.5rem;
+  > div {
+    padding: 0.5rem;
+    border-radius: 20px;
+    ${props =>
+      props.theme.isDark && 'background-color: hsla(0, 0%, 100%, 0.2)'};
+  }
 `;
 
 function Portfolio(props) {
-  const themeContext = useContext(ThemeContext);
+  // const themeContext = useTheme().strokeColor;
   const [imageMap, setImageMap] = useState({});
   const closeModal = id => {
     setImageMap({ ...imageMap, [id]: false });
   };
-  console.log('THEME', themeContext, themeContext?.strokeColor);
+  // console.log('THEME', themeContext, useTheme());
 
   const openModal = id => {
     // if (e.type === 'click')
@@ -151,19 +161,27 @@ function Portfolio(props) {
         </ImageCarousel>
         <TextContainer>
           <ProjectTitle>
-            {frontmatter.title}
-            <a href={frontmatter.deployment}>
-              <LinkIcon size="15" color="black" />
-            </a>
-            <a href={frontmatter.github}>
-              <CodeIcon size="15" color="black" />
-            </a>
+            <h1>{frontmatter.title}</h1>
+            <ThemeConsumer>
+              {theme => (
+                <>
+                  <a href={frontmatter.deployment}>
+                    <LinkIcon size="15" color={theme.strokeColor} />
+                  </a>
+                  <a href={frontmatter.github}>
+                    <CodeIcon size="15" color={theme.strokeColor} />
+                  </a>
+                </>
+              )}
+            </ThemeConsumer>
           </ProjectTitle>
           <StackDiv>
-            {frontmatter.stack &&
-              frontmatter.stack.map(item => {
-                return <StackContainer key={item} name={item} />;
-              })}
+            <div>
+              {frontmatter.stack &&
+                frontmatter.stack.map(item => {
+                  return <StackContainer key={item} name={item} />;
+                })}
+            </div>
           </StackDiv>
           <DescriptionDiv>
             {/* <header>

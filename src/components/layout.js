@@ -1,14 +1,16 @@
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import { useStaticQuery, graphql } from 'gatsby';
-import React from 'react';
+import Helmet from 'react-helmet';
+import React, { useState, useLayoutEffect } from 'react';
 import { theme } from '../utils/theme';
+import { darkTheme } from '../utils/darkTheme';
 import Footer from './footer';
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Open+Sans|Work+Sans&display=swap');
+
 body, html{
   font-family: 'Work Sans';
   max-width: 100vw;
+  transition: .25s ease-in;
   background-color: ${p => p.theme.backgroundColor};
   color: ${p => p.theme.strokeColor};
 }
@@ -35,13 +37,31 @@ const Content = styled.main`
     padding: 0;
   }
 `;
-
 const Layout = ({ children }) => {
+  const [isDark, setIsDark] = useState(false);
+
+  useLayoutEffect(() => {
+    const isDarkBool = localStorage.getItem('isDark');
+    setIsDark(JSON.parse(isDarkBool));
+  }, []);
+
+  const toggleDark = () => {
+    localStorage.setItem('isDark', !isDark);
+
+    setIsDark(!isDark);
+  };
+  console.log(isDark);
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={isDark ? darkTheme : theme}>
+      <Helmet>
+        <link
+          href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300|Work+Sans&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
       <GlobalStyle />
       <Content>{children}</Content>
-      <Footer />
+      <Footer toggle={toggleDark} />
     </ThemeProvider>
   );
 };

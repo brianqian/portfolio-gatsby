@@ -29,7 +29,7 @@ const NavItems = styled(SocialItems)`
   color: white;
   text-transform: uppercase;
 `;
-const Footer = () => {
+const Footer = ({ toggle }) => {
   return (
     <Container>
       <SocialItems>
@@ -63,6 +63,11 @@ const Footer = () => {
         >
           <Tooltip text="LinkedIn">
             <IconContainer path="linkedin.svg" size="25" />
+          </Tooltip>
+        </a>
+        <a href="#" onClick={toggle}>
+          <Tooltip text={`Dark Mode`}>
+            <IconContainer path="moon.svg" size="25" />
           </Tooltip>
         </a>
       </SocialItems>
