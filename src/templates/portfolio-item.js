@@ -10,22 +10,32 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 50px);
-  margin: 0 20%;
-  /* border: 1px solid black; */
-  button {
-    border: 1px solid black;
-    border-radius: 100%;
-    padding: 0.5rem;
-    font-size: 20px;
-    height: 50px;
-    width: 50px;
-    :hover {
-      background-color: lightgray;
-    }
-    :active {
-      outline: none;
-    }
+  width: 75%;
+  margin: 0 auto;
+  @media all and (max-width: 1200px) {
+    width: 100%;
   }
+  /* border: 1px solid black; */
+`;
+
+const BackButton = styled.button`
+  /* border: 1px solid black; */
+  border: none;
+  border-radius: 100%;
+  box-shadow: 0px 10px 23px -5px rgba(0,0,0,.2);
+  padding: 0.5rem;
+  font-size: 20px;
+  height: 50px;
+  width: 50px;
+  transition: .2s ease-in;
+  :hover {
+    background-color: hsla(0, 0%, 93%, .7);
+    box-shadow: -1px 7px 9px 0px rgba(0,0,0,.4);
+  }
+  :active {
+    outline: none;
+  }
+}
 `;
 
 const ImageCarousel = styled.div`
@@ -74,7 +84,6 @@ const StackDiv = styled.div`
 
 function Portfolio({ data }) {
   const [imageMap, setImageMap] = useState({});
-
   const closeModal = id => {
     setImageMap({ ...imageMap, [id]: false });
   };
@@ -99,9 +108,9 @@ function Portfolio({ data }) {
     <Layout>
       <Container>
         <Link to="/portfolio">
-          <button type="button">
+          <BackButton type="button">
             <img src="/img/icons8-back-50.png" width="100%" alt="back" />
-          </button>
+          </BackButton>
         </Link>
         <ImageCarousel>
           {!!nodes.length &&

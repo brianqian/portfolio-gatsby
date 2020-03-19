@@ -29,12 +29,11 @@ const NavItems = styled(SocialItems)`
   color: white;
   text-transform: uppercase;
 `;
-
 const Footer = () => {
   return (
     <Container>
       <SocialItems>
-        <a href="http://localhost:8000">
+        <a href={process.env.GATSBY_HOST_NAME || process.env.URL}>
           <Tooltip text="Home">
             <IconContainer path="home.svg" size="25" />
           </Tooltip>

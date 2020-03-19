@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import ProjectGridItem from "../../components/ProjectGridItem";
-import Layout from "../../components/layout";
+import React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import ProjectGridItem from '../../components/ProjectGridItem';
+import Layout from '../../components/layout';
 
 const Container = styled.div`
   padding: 0 8%;
@@ -27,13 +27,12 @@ function Portfolio({ data }) {
         <h1>Projects</h1>
         <ProjectContainer>
           {!!edges.length &&
-            edges.map(({ node: { frontmatter }, id }) => (
-              <ProjectGridItem title={frontmatter.title}>
+            edges.map(({ node: { frontmatter, id } }) => (
+              <ProjectGridItem title={frontmatter.title} key={id}>
                 <Img
-                  key={id}
                   fixed={frontmatter.splashImg.childImageSharp.fixed}
                   style={{
-                    boxShadow: "-1px 10px 15px -2px hsla(570, 50%, 35%, .5)",
+                    boxShadow: '-1px 10px 15px -2px hsla(570, 50%, 35%, .5)',
                   }}
                   imgStyle={
                     {
