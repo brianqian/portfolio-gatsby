@@ -27,9 +27,8 @@ const ImageCarousel = styled.div`
   width: 100%;
   margin: 0 auto;
   grid-gap: 0.5rem;
-  /* transition: 0.25s ease-in; */
-  box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.2);
-  /* inset 0px 10px 12px 0px rgba(0, 0, 0, 0.2); */
+  overflow: auto;
+  box-shadow: -3px 5px 5px 0px rgba(0, 0, 0, 0.2);
   padding: 2rem 0;
   .carousel__image {
     :hover {

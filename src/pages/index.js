@@ -7,15 +7,16 @@ import SEO from '../components/seo';
 
 const Container = styled.div`
   display: flex;
-  @media all and (max-width: 900px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 750px;
+  margin: 2rem auto;
+  padding: 2rem;
+  box-shadow: 0px 10px 23px 0px rgba(0, 0, 0, 0.2);
 `;
 
 const ImageContainer = styled.div`
-  padding-top: 10%;
   flex: 1;
   position: relative;
 `;
@@ -29,15 +30,16 @@ const ImagePlaceholder = styled.div`
 `;
 
 const AboutMeContainer = styled.div`
-  flex: 2.5;
+  flex: 8;
   display: flex;
   flex-direction: column;
-  padding: 10% 0;
+  padding: 2rem 0;
   height: 100%;
 `;
 const AboutMeText = styled.div`
   flex: 1;
   > h1 {
+    color: purple;
     font-size: 3.2em;
   }
   > h3 {
@@ -81,7 +83,7 @@ const IndexPage = props => {
           <AboutMeText>
             <h1>BRIAN QIAN</h1>
             <h3>
-              Self-taught programmer focused on creating experiences for users
+              Self-taught developer focused on creating experiences for users
               and developers alike.
             </h3>
             <p>

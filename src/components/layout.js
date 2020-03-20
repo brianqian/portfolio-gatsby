@@ -35,6 +35,9 @@ const Content = styled.main`
   padding: 0 9%;
   min-height: calc(100vh - 50px);
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media all and (max-width: 1200px) {
     padding: 0;
