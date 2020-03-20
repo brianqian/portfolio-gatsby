@@ -14,6 +14,9 @@ body, html{
   background-color: ${p => p.theme.backgroundColor};
   color: ${p => p.theme.strokeColor};
 }
+ul{
+  list-style-position: inside;
+}
 *{
   margin: 0;
   padding: 0;
@@ -37,7 +40,8 @@ const Content = styled.main`
     padding: 0;
   }
 `;
-const Layout = ({ children }) => {
+const Layout = props => {
+  const { children, location, ctx } = props;
   const [isDark, setIsDark] = useState(false);
 
   useLayoutEffect(() => {
@@ -47,10 +51,8 @@ const Layout = ({ children }) => {
 
   const toggleDark = () => {
     localStorage.setItem('isDark', !isDark);
-
     setIsDark(!isDark);
   };
-  console.log(isDark);
   return (
     <ThemeProvider theme={isDark ? darkTheme : theme}>
       <Helmet>
@@ -61,7 +63,12 @@ const Layout = ({ children }) => {
       </Helmet>
       <GlobalStyle />
       <Content>{children}</Content>
-      <Footer toggle={toggleDark} />
+      <Footer
+        toggle={toggleDark}
+        isDark={isDark}
+        location={location}
+        ctx={ctx}
+      />
     </ThemeProvider>
   );
 };

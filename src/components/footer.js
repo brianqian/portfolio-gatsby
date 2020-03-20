@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import IconContainer from './IconContainer';
 import Tooltip from './Tooltip';
-import NavItem from './NavItem';
+import Nav from './Nav';
 
 const Container = styled.footer`
   height: 50px;
@@ -13,7 +13,7 @@ const Container = styled.footer`
   position: fixed;
   bottom: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 8rem;
 `;
 
@@ -23,15 +23,23 @@ const SocialItems = styled.div`
   align-items: center;
   height: 100%;
   width: 200px;
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+  }
 `;
 
 const NavItems = styled(SocialItems)`
   color: white;
   text-transform: uppercase;
 `;
-const Footer = ({ toggle }) => {
+const Footer = props => {
+  const { isDark, toggle, location, ctx } = props;
+  console.log(props);
   return (
     <Container>
+      <Nav location={location} ctx={ctx} />
       <SocialItems>
         <Link to="/">
           <Tooltip text="Home">
@@ -65,11 +73,11 @@ const Footer = ({ toggle }) => {
             <IconContainer path="linkedin.svg" size="25" />
           </Tooltip>
         </a>
-        <a href="#" onClick={toggle}>
-          <Tooltip text={`Dark Mode`}>
-            <IconContainer path="moon.svg" size="25" />
+        <button type="button" onClick={toggle}>
+          <Tooltip text={`${isDark ? 'Light' : 'Dark'} Mode`}>
+            <IconContainer path={`${isDark ? 'sun' : 'moon'}.svg`} size="25" />
           </Tooltip>
-        </a>
+        </button>
       </SocialItems>
     </Container>
   );

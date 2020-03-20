@@ -9,6 +9,11 @@ const Container = styled.div`
   padding: 0 8%;
 `;
 
+const Header = styled.header`
+  display: flex;
+  justify-content: center;
+`;
+
 const ProjectContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -22,12 +27,15 @@ const ProjectContainer = styled.div`
   }
 `;
 
-function Portfolio({ data }) {
+function Portfolio(props) {
+  const { data, pageContext, uri } = props;
   const { edges } = data.allMarkdownRemark;
   return (
-    <Layout>
+    <Layout location={uri} ctx={pageContext}>
       <Container>
-        <h1>Projects</h1>
+        <Header>
+          <h1>WORK</h1>
+        </Header>
         <ProjectContainer>
           {!!edges.length &&
             edges.map(({ node: { frontmatter, id } }) => (

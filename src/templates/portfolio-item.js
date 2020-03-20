@@ -37,7 +37,7 @@ const BackButton = styled.button`
   :active {
     outline: none;
   }
-}
+
 `;
 
 const ImageCarousel = styled.div`
@@ -76,10 +76,12 @@ const DescriptionDiv = styled.div`
   }
 `;
 
-const ProjectTitle = styled.h2`
+const ProjectTitle = styled.header`
   /* font-size: 2em; */
   display: flex;
   margin-left: 2rem;
+  align-items: flex-end;
+  /* justify-content: flex-end; */
 `;
 
 const StackDiv = styled.aside`
@@ -95,15 +97,14 @@ const StackDiv = styled.aside`
 `;
 
 function Portfolio(props) {
-  // const themeContext = useTheme().strokeColor;
+  const { data, uri, pageContext } = props;
   const [imageMap, setImageMap] = useState({});
+
   const closeModal = id => {
     setImageMap({ ...imageMap, [id]: false });
   };
-  // console.log('THEME', themeContext, useTheme());
 
   const openModal = id => {
-    // if (e.type === 'click')
     setImageMap({ ...imageMap, [id]: true });
   };
 
@@ -116,10 +117,10 @@ function Portfolio(props) {
   const {
     markdownRemark: { frontmatter, html },
     images: { nodes },
-  } = props.data;
-
+  } = data;
+  console.log('port item', props);
   return (
-    <Layout>
+    <Layout location={uri} ctx={pageContext}>
       <Container>
         <Link to="/portfolio">
           <BackButton type="button">
@@ -157,7 +158,6 @@ function Portfolio(props) {
                 </div>
               );
             })}
-          {/* <Img fixed={frontmatter.img1.fixed}></Img> */}
         </ImageCarousel>
         <TextContainer>
           <ProjectTitle>
@@ -184,23 +184,6 @@ function Portfolio(props) {
             </div>
           </StackDiv>
           <DescriptionDiv>
-            {/* <header>
-              <h2>{frontmatter.title} -</h2>
-              <a
-                href={frontmatter.github}
-                target="__blank"
-                rel="noopener noreferer"
-              >
-                Github
-              </a>
-              <a
-                href={frontmatter.deployment}
-                target="__blank"
-                rel="noopener noreferer"
-              >
-                Deployment
-              </a>
-            </header> */}
             <div dangerouslySetInnerHTML={{ __html: html }} />
           </DescriptionDiv>
         </TextContainer>

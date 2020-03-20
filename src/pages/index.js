@@ -68,9 +68,10 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const IndexPage = () => {
+const IndexPage = props => {
+  const { uri, pageContext } = props;
   return (
-    <Layout>
+    <Layout location={uri} ctx={pageContext}>
       <SEO title="Home" />
       <Container>
         <ImageContainer>
