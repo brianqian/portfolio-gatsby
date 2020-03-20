@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import styled, { ThemeConsumer } from 'styled-components';
 import { graphql, Link } from 'gatsby';
-import Img from 'gatsby-image';
-import Modal from '../components/ImageModal';
 import Layout from '../components/layout';
 import StackContainer from '../components/StackContainer';
 import LinkIcon from '../components/svg/LinkComponent';
 import CodeIcon from '../components/svg/CodeComponent';
+import ImageCarousel from '../components/ImageCarousel';
 
 const Container = styled.div`
   display: flex;
@@ -18,25 +17,6 @@ const Container = styled.div`
     width: 100%;
   }
 `;
-
-const ImageCarousel = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  margin: 0 auto;
-  grid-gap: 0.5rem;
-  overflow: auto;
-  box-shadow: -3px 5px 5px 0px rgba(0, 0, 0, 0.2);
-  padding: 2rem 0;
-  .carousel__image {
-    :hover {
-      border: 1px solid ${props => props.theme.strokeColor};
-    }
-  }
-`;
-
 const TextContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
@@ -86,21 +66,6 @@ const StackDiv = styled.aside`
 
 function Portfolio(props) {
   const { data, uri, pageContext } = props;
-  const [imageMap, setImageMap] = useState({});
-
-  const closeModal = id => {
-    setImageMap({ ...imageMap, [id]: false });
-  };
-
-  const openModal = id => {
-    setImageMap({ ...imageMap, [id]: true });
-  };
-
-  const handleKeyPress = (e, id) => {
-    console.log(e.type, e.key, e.keyCode);
-    if (e.key === 'Enter') openModal(id);
-    if (e.key === 'Escape') closeModal(id);
-  };
 
   const {
     markdownRemark: { frontmatter, html },
@@ -111,42 +76,7 @@ function Portfolio(props) {
     <Layout location={uri} ctx={pageContext}>
       <Container>
         <Link to="/portfolio" />
-        <ImageCarousel>
-          {!!nodes.length &&
-            nodes.map((node, i) => {
-              const { childImageSharp, extension, id, publicURL } = node;
-              if (extension !== 'mp4') {
-                const { fixed, fluid } = childImageSharp;
-                return (
-                  <div
-                    key={id}
-                    onClick={() => openModal(id)}
-                    role="tablist"
-                    tabIndex={i}
-                    onKeyPress={e => handleKeyPress(e, id)}
-                  >
-                    <Img fixed={fixed} className="carousel__image" />
-                    <Modal
-                      height="85vh"
-                      width="70vw"
-                      padding="1rem"
-                      hide={closeModal}
-                      isShowing={!!imageMap[id]}
-                      id={id}
-                    >
-                      <Img fluid={fluid} />
-                    </Modal>
-                  </div>
-                );
-              }
-              return (
-                <video muted controls width="350" key={id}>
-                  <source src={publicURL} type="video/mp4" />
-                  "⚠ Embedded videos not enabled "
-                </video>
-              );
-            })}
-        </ImageCarousel>
+        <ImageCarousel media={nodes} />
         <TextContainer>
           <ProjectTitle>
             <h1>{frontmatter.title}</h1>

@@ -11,7 +11,11 @@ const Container = styled.div`
 
 const Header = styled.header`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  h1 {
+    font-family: 'Inconsolata';
+    padding-left: 1.5rem;
+  }
 `;
 
 const ProjectContainer = styled.div`
@@ -19,9 +23,8 @@ const ProjectContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
   justify-content: center;
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
   grid-gap: 1rem 3rem;
-  margin-top: 2rem;
   @media all and (max-width: 900px) {
     grid-template-columns: 1fr;
   }
@@ -34,7 +37,7 @@ function Portfolio(props) {
     <Layout location={uri} ctx={pageContext}>
       <Container>
         <Header>
-          <h1>WORK</h1>
+          <h1>./portfolio</h1>
         </Header>
         <ProjectContainer>
           {!!edges.length &&
