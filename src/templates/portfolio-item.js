@@ -23,6 +23,7 @@ const ImageCarousel = styled.div`
   display: grid;
   grid-auto-flow: column;
   justify-content: space-around;
+  align-items: center;
   width: 100%;
   margin: 0 auto;
   grid-gap: 0.5rem;
