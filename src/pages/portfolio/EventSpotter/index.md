@@ -1,23 +1,23 @@
 ---
 id: 4
-title: "EventSpotter"
-date: "8/2019"
-github: "https://github.com/brianqian/eventspotter-react"
-deployment: "http://eventspotter.herokuapp.com"
+title: 'EventSpotter'
+date: '8/2019'
+github: 'https://github.com/brianqian/eventspotter-react'
+deployment: 'https://eventspotter.herokuapp.com'
 stack:
   [
-    "HTML",
-    "CSS",
-    "Typescript",
-    "React",
-    "NextJS",
-    "styled-components",
-    "Node",
-    "Express",
-    "AWS",
-    "MySQL",
+    'HTML',
+    'CSS',
+    'Typescript',
+    'React',
+    'NextJS',
+    'styled-components',
+    'Node',
+    'Express',
+    'AWS',
+    'MySQL',
   ]
-splashImg: "./eventspotter.png"
+splashImg: './eventspotter.png'
 ---
 
 EventSpotter is a platform that syncs with a user's Spotify account to find their top artists and generate an event calendar using the SeatGeek API. Users have access to their Spotify Library with access to advanced metrics like acousticness, instrumentalness, and more. Users can choose a metric to generate an event calendar that has ticket prices from SeatGeek.

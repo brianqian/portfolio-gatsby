@@ -3,7 +3,7 @@ id: 1
 title: 'nSuns Calculator'
 date: '1/2019'
 github: 'https://github.com/brianqian/nsuns-react'
-deployment: 'http://nsuns-app.herokuapp.com'
+deployment: 'https://nsuns-app.herokuapp.com'
 stack:
   [
     'HTML',
