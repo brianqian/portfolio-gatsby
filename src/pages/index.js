@@ -85,16 +85,16 @@ const IndexPage = props => {
               and developers alike.
             </h3>
             <p>
-              I'm a fullstack dev that works primarily with React for the
-              fronten and Node/Postgres for the backend.I'm a bootcamp grad from
-              UC Berkeley but I would consider myself mostly self-taught.
+              After finishing a bootcamp at UC Berkeley, I've spent the majority
+              of my free time learning new technologies in web development. I'm
+              a Javascript developer that's been working mostly in the React
+              ecosystem but I've also dedicated time to being fluent in query
+              languages, backend optimization, and devops concerns.
             </p>
 
             <p>
-              Technologies I've learned include React, Node, Express, MySQL
-              Postgres, MongoDB, Nextjs, Gatsby, GraphQL, Websocket A
-              styled-components.I've deployed on AWS, Heroku, Netlify, and Zeit
-              Now.
+              Familiar tech: React, Typescript, Nextjs, Gatsby, Node, Express,
+              MySQL, Postgres, MongoDB, GraphQL, Socket.io, styled-components.
             </p>
           </AboutMeText>
 
