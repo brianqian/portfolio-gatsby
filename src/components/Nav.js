@@ -9,6 +9,7 @@ const Container = styled.nav`
   align-items: center;
   color: white;
   font-size: 1.3em;
+  font-family: 'Inconsolata';
   span {
     white-space: nowrap;
     color: white;

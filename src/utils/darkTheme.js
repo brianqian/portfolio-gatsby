@@ -1,7 +1,7 @@
 const darkTheme = {
   isDark: true,
   backgroundColor: '#222',
-  strokeColor: 'hsla(0,0%,70%,1)',
+  strokeColor: 'hsla(0,0%,90%,1)',
   bs: '0 10px 23px -5px rgba(0,0,0,.2)',
   textFont: 'Source Sans Pro',
   accent: 'darkorange',

@@ -13,7 +13,7 @@ const Container = styled.div`
   flex-direction: column;
   min-height: calc(100vh - 50px);
   width: 75%;
-  margin: 0 auto;
+  margin: 3rem auto;
   @media all and (max-width: 1200px) {
     width: 100%;
   }
@@ -47,9 +47,11 @@ const ImageCarousel = styled.div`
   width: 100%;
   margin: 0 auto;
   grid-gap: 0.5rem;
-  transition: 0.25s ease-in;
+  /* transition: 0.25s ease-in; */
+  box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.2);
+  /* inset 0px 10px 12px 0px rgba(0, 0, 0, 0.2); */
+  padding: 2rem 0;
   .carousel__image {
-    transition: 0.25s ease-in;
     :hover {
       border: 1px solid ${props => props.theme.strokeColor};
     }
@@ -77,10 +79,12 @@ const DescriptionDiv = styled.div`
 `;
 
 const ProjectTitle = styled.header`
-  /* font-size: 2em; */
+  font-size: 1.2em;
   display: flex;
   margin-left: 2rem;
   align-items: flex-end;
+  grid-column: 2;
+  /* justify-self: center; */
   a {
     margin: 0 0.5rem;
   }
@@ -128,9 +132,9 @@ function Portfolio(props) {
     <Layout location={uri} ctx={pageContext}>
       <Container>
         <Link to="/portfolio">
-          <BackButton type="button">
+          {/* <BackButton type="button">
             <img src="/img/icons8-back-50.png" width="100%" alt="back" />
-          </BackButton>
+          </BackButton> */}
         </Link>
         <ImageCarousel>
           {!!nodes.length &&

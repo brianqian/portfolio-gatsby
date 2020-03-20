@@ -57,7 +57,7 @@ const Layout = props => {
     <ThemeProvider theme={isDark ? darkTheme : theme}>
       <Helmet>
         <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300|Work+Sans&display=swap"
+          href="https://fonts.googleapis.com/css?family=Open+Sans|Inconsolata|Work+Sans&display=swap"
           rel="stylesheet"
         />
       </Helmet>

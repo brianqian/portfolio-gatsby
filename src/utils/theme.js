@@ -4,7 +4,7 @@ const darkColor = {
 };
 
 const theme = {
-  backgroundColor: '#F7FAFC',
+  backgroundColor: 'hsl(214, 25%, 95%)',
   // backgroundColor: 'orange',
   // strokeColor: 'black',
   strokeColor: 'hsla(240,90%,20%)',
