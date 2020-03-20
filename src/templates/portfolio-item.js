@@ -81,7 +81,12 @@ const ProjectTitle = styled.header`
   display: flex;
   margin-left: 2rem;
   align-items: flex-end;
-  /* justify-content: flex-end; */
+  a {
+    margin: 0 0.5rem;
+  }
+  h1 {
+    margin-right: 1rem;
+  }
 `;
 
 const StackDiv = styled.aside`
@@ -166,10 +171,10 @@ function Portfolio(props) {
               {theme => (
                 <>
                   <a href={frontmatter.deployment}>
-                    <LinkIcon size="15" color={theme.strokeColor} />
+                    <LinkIcon size="16" color={theme.strokeColor} />
                   </a>
                   <a href={frontmatter.github}>
-                    <CodeIcon size="15" color={theme.strokeColor} />
+                    <CodeIcon size="18" color={theme.strokeColor} />
                   </a>
                 </>
               )}
