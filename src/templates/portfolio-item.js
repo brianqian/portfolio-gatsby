@@ -19,27 +19,6 @@ const Container = styled.div`
   }
 `;
 
-const BackButton = styled.button`
-  border: none;
-  border-radius: 100%;
-  box-shadow: 0px 10px 23px -5px rgba(0,0,0,.2);
-  padding: 0.5rem;
-  font-size: 20px;
-  height: 50px;
-  width: 50px;
-  transition: .2s ease-in;
-  background-color: hsla(0,0%,70%,.8);
-  /* ${props => props.theme.isDark && 'background-color: hsla(0,0%,5%,.9)'}; */
-  :hover {
-    background-color: hsla(0, 0%, 93%, .7);
-    box-shadow: -1px 7px 9px 0px rgba(0,0,0,.4);
-  }
-  :active {
-    outline: none;
-  }
-
-`;
-
 const ImageCarousel = styled.div`
   display: grid;
   grid-auto-flow: column;
@@ -127,44 +106,44 @@ function Portfolio(props) {
     markdownRemark: { frontmatter, html },
     images: { nodes },
   } = data;
-  console.log('port item', props);
+  console.log('port item', data);
   return (
     <Layout location={uri} ctx={pageContext}>
       <Container>
-        <Link to="/portfolio">
-          {/* <BackButton type="button">
-            <img src="/img/icons8-back-50.png" width="100%" alt="back" />
-          </BackButton> */}
-        </Link>
+        <Link to="/portfolio" />
         <ImageCarousel>
           {!!nodes.length &&
-            nodes.map((image, i) => {
-              const {
-                childImageSharp: { id, fluid },
-              } = image;
-              return (
-                <div
-                  key={id}
-                  onClick={() => openModal(id)}
-                  role="tablist"
-                  tabIndex={i}
-                  onKeyPress={e => handleKeyPress(e, id)}
-                >
-                  <Img
-                    fixed={image.childImageSharp.fixed}
-                    className="carousel__image"
-                  />
-                  <Modal
-                    height="85vh"
-                    width="70vw"
-                    padding="1rem"
-                    hide={closeModal}
-                    isShowing={!!imageMap[id]}
-                    id={id}
+            nodes.map((node, i) => {
+              const { childImageSharp, extension, id, publicURL } = node;
+              if (extension !== 'mp4') {
+                const { fixed, fluid } = childImageSharp;
+                return (
+                  <div
+                    key={id}
+                    onClick={() => openModal(id)}
+                    role="tablist"
+                    tabIndex={i}
+                    onKeyPress={e => handleKeyPress(e, id)}
                   >
-                    <Img fluid={fluid} />
-                  </Modal>
-                </div>
+                    <Img fixed={fixed} className="carousel__image" />
+                    <Modal
+                      height="85vh"
+                      width="70vw"
+                      padding="1rem"
+                      hide={closeModal}
+                      isShowing={!!imageMap[id]}
+                      id={id}
+                    >
+                      <Img fluid={fluid} />
+                    </Modal>
+                  </div>
+                );
+              }
+              return (
+                <video muted controls width="350" key={id}>
+                  <source src={publicURL} type="video/mp4" />
+                  "⚠ Embedded videos not enabled "
+                </video>
               );
             })}
         </ImageCarousel>
@@ -216,8 +195,8 @@ export const query = graphql`
     images: allFile(
       filter: {
         sourceInstanceName: { eq: "projects" }
-        relativeDirectory: { glob: $title }
-        extension: { in: ["png", "jpg", "webp", "gif"] }
+        relativeDirectory: { eq: $title }
+        extension: { in: ["png", "jpg", "webp", "gif", "mp4"] }
       }
     ) {
       nodes {
@@ -228,8 +207,10 @@ export const query = graphql`
           fluid(maxWidth: 1920, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp
           }
-          id
         }
+        id
+        extension
+        publicURL
       }
     }
   }

@@ -30,13 +30,8 @@ const SocialItems = styled.div`
   }
 `;
 
-const NavItems = styled(SocialItems)`
-  color: white;
-  text-transform: uppercase;
-`;
 const Footer = props => {
   const { isDark, toggle, location, ctx } = props;
-  console.log(props);
   return (
     <Container>
       <Nav location={location} ctx={ctx} />
