@@ -14,6 +14,7 @@ const Container = styled.div`
   margin: 2rem auto;
   padding: 2rem;
   box-shadow: 0px 10px 23px 0px rgba(0, 0, 0, 0.2);
+  background-color: ${props => props.theme.primary};
 `;
 
 const ImageContainer = styled.div`
@@ -60,10 +61,6 @@ const StyledLink = styled(Link)`
   width: fit-content;
   margin-right: 2rem;
   > span {
-    /* color: white;
-    background-color: hsla(300, 50%, 30%, 0.8);
-    padding: 10px 15px;
-    border-radius: 10px; */
     font-size: 1.5em;
     border-bottom: 1px solid black;
     padding-bottom: 8px;

@@ -4,15 +4,18 @@ import React, { useState, useLayoutEffect } from 'react';
 import { theme } from '../utils/theme';
 import { darkTheme } from '../utils/darkTheme';
 import Footer from './footer';
+import desk from '../img/desk.png';
+import deskNight from '../img/deskNight.png';
+import newYork from '../img/newyork.png';
+import newYorkNight from '../img/newyorknight.png';
 
 const GlobalStyle = createGlobalStyle`
+
 
 body, html{
   font-family: 'Work Sans';
   max-width: 100vw;
-  transition: .25s ease-in;
-  background-color: ${p => p.theme.backgroundColor};
-  color: ${p => p.theme.strokeColor};
+  background: ${p => p.theme.bgColor};
 }
 ul{
   list-style-position: inside;
@@ -38,6 +41,11 @@ const Content = styled.main`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.5s ease-in;
+
+  background: no-repeat center url(${p => p.bg});
+  /* background-size: contain; */
+  color: ${p => p.theme.strokeColor};
 
   @media all and (max-width: 1200px) {
     padding: 0;
@@ -46,15 +54,37 @@ const Content = styled.main`
 const Layout = props => {
   const { children, location, ctx } = props;
   const [isDark, setIsDark] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useLayoutEffect(() => {
     const isDarkBool = localStorage.getItem('isDark');
-    setIsDark(JSON.parse(isDarkBool));
+    const setInitialState = async () => {
+      await setIsDark(JSON.parse(isDarkBool));
+      setIsLoaded(true);
+    };
+    setInitialState();
   }, []);
 
   const toggleDark = () => {
     localStorage.setItem('isDark', !isDark);
     setIsDark(!isDark);
+  };
+
+  const generateBgImg = () => {
+    const isPortfolioPage = !!location.split('/')[1];
+    if (isDark && isPortfolioPage) {
+      return deskNight;
+    }
+    if (!isDark && isPortfolioPage) {
+      return desk;
+    }
+    if (isDark && !isPortfolioPage) {
+      return newYorkNight;
+    }
+    if (!isDark && !isPortfolioPage) {
+      return newYork;
+    }
+    return console.error('generate bg img error');
   };
   return (
     <ThemeProvider theme={isDark ? darkTheme : theme}>
@@ -65,7 +95,7 @@ const Layout = props => {
         />
       </Helmet>
       <GlobalStyle />
-      <Content>{children}</Content>
+      {isLoaded && <Content bg={generateBgImg()}>{children}</Content>}
       <Footer
         toggle={toggleDark}
         isDark={isDark}

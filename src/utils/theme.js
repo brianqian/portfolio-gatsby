@@ -4,7 +4,8 @@ const darkColor = {
 };
 
 const theme = {
-  backgroundColor: 'hsl(214, 25%, 95%)',
+  bgColor: 'hsl(214, 25%, 95%)',
+  bgColorDarken: 'hsl(214, 25%, 25%)',
   // backgroundColor: 'orange',
   // strokeColor: 'black',
   strokeColor: 'hsla(240,90%,20%)',
@@ -12,6 +13,8 @@ const theme = {
   bs: '0 10px 23px -5px rgba(0,0,0,.2)',
   textFont: 'Source Sans Pro',
   accent: 'darkorange',
+  primary: '#EBF8FF',
+  secondary: '#CBD5E0',
   changeOpacity: (color, opacity) => {
     const opacityHexCodes = {
       0: '00',

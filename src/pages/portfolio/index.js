@@ -6,7 +6,10 @@ import ProjectGridItem from '../../components/ProjectGridItem';
 import Layout from '../../components/layout';
 
 const Container = styled.div`
-  padding: 0 8%;
+  padding: 2rem 5rem;
+  /* border: 1px solid black; */
+  background-color: ${p => p.theme.primary};
+  box-shadow: 0px 12px 21px 0px rgba(0, 0, 0, 0.4);
 `;
 
 const Header = styled.header`
@@ -15,16 +18,16 @@ const Header = styled.header`
   h1 {
     font-family: 'Inconsolata';
     padding-left: 1.5rem;
+    margin-bottom: 1rem;
   }
 `;
 
 const ProjectContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, auto);
   width: 100%;
   justify-content: center;
-  /* padding: 2rem 0; */
-  grid-gap: 1rem 3rem;
+  grid-gap: 2.5rem;
   @media all and (max-width: 900px) {
     grid-template-columns: 1fr;
   }
@@ -45,14 +48,7 @@ function Portfolio(props) {
               <ProjectGridItem title={frontmatter.title} key={id}>
                 <Img
                   fixed={frontmatter.splashImg.childImageSharp.fixed}
-                  style={{
-                    boxShadow: '-1px 10px 15px -2px hsla(570, 50%, 35%, .5)',
-                  }}
-                  imgStyle={
-                    {
-                      // border: "1.5px solid hsla(300, 50%, 40%, .6)",
-                    }
-                  }
+                  className="portfolio__grid-item"
                 />
               </ProjectGridItem>
             ))}

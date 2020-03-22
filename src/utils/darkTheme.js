@@ -1,10 +1,13 @@
 const darkTheme = {
   isDark: true,
-  backgroundColor: '#222',
+  bgColor: '#222',
+  bgColorDarken: '#111',
   strokeColor: 'hsla(0,0%,90%,1)',
   bs: '0 10px 23px -5px rgba(0,0,0,.2)',
   textFont: 'Source Sans Pro',
-  accent: 'darkorange',
+  accent: 'hsla(204,50%,50%)',
+  primary: 'hsla(0, 5%, 10%)',
+  secondary: 'hsla(218, 17%, 25%)',
   changeOpacity: (color, opacity) => {
     const opacityHexCodes = {
       0: '00',

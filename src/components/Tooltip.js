@@ -25,10 +25,11 @@ const TooltipContainer = styled.div`
 function Tooltip({ children, text }) {
   const [isHovered, setIsHovered] = useState(false);
 
-  const toggle = () => setIsHovered(!isHovered);
-
   return (
-    <Container onMouseEnter={toggle} onMouseLeave={toggle}>
+    <Container
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {children}
       {isHovered && (
         <TooltipContainer>
